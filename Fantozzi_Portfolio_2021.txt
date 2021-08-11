@@ -1,0 +1,1225 @@
+********************************
+
+    Anthony Fantozzi
+
+********************************
+    Portfolio of Codes
+********************************
+
+********************************
+Code 1:  Sort numbers in Ascending order 
+********************************
+#include <stdio.h>   
+
+int main()    
+{        
+  int i, j, a, n, number[40];        
+  printf("Enter The Number Of Numbers To Be sorted: \n");        
+  scanf("%d", &n); //Scans all numbers that will be sorted
+  printf("Enter the numbers \n");        
+  
+  for (i = 0; i < n; ++i)            
+  scanf("%d", &number[i]); //nested for loops to sort descending order        
+  for (i = 0; i < n; ++i)         
+   {            
+     for (j = i + 1; j < n; ++j)            
+     { 
+       if (number[i] > number[j])                 
+        { 
+          a =  number[i];                    
+          number[i] = number[j];                    
+          number[j] = a;                
+        }            
+      }        
+   } //Displays the numbers in Ascending order        
+ printf("The Numbers In Asceinding Order \n");        
+  for (i = 0; i < n; ++i)            
+  printf("%d\n", number[i]);    
+}
+
+********************************
+Code 2:  Sort numbers in Decending order
+********************************
+
+#include <stdio.h>   
+
+int main()    
+{        
+  int i, j, a, n, number[30];        
+  printf("Enter The Number Of Numbers To Be sorted: \n");        
+  scanf("%d", &n); //Scans all numbers that will be sorted
+  printf("Enter the numbers \n");        
+  
+  for (i = 0; i < n; ++i)            
+  scanf("%d", &number[i]); //nested for loops to sort descending order        
+  for (i = 0; i < n; ++i)         
+   {            
+     for (j = i + 1; j < n; ++j)            
+     { 
+       if (number[i] < number[j])                 
+        { 
+          a =  number[i];                    
+          number[i] = number[j];                    
+          number[j] = a;                
+        }            
+      }        
+   } //Displays the numbers in descending order        
+ printf("The Numbers In Descending Order \n");        
+  for (i = 0; i < n; ++i)            
+  printf("%d\n", number[i]);    
+}
+
+********************************
+Code 3:  Frequency counter of characters in a string 
+********************************
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+char w[100];
+int x, i, j, freq, d;
+printf("type in a sentace with no spaces:\n");
+scanf("%s", w);
+x = strlen(w);
+d = 0;
+freq = 1;
+for(i=0; i <= x; i++) 
+{
+    j = 0;
+    for(j=0; j < x; ++j ) 
+    {
+      if ((w[i] == w[j]) && (i != j))
+       {
+        freq = freq +1 ;
+       }
+    }
+    if (freq >= 1)
+     {
+      printf("letter: %c, occurrences: %d\n", w[i], freq);
+      d = 1;
+      freq = 1;
+     }
+}
+if (d < 1)
+ {
+    printf("No repeating characters found\n");
+ } 
+return 0;
+}
+
+********************************
+Code 4:  Calculate frequency of number in a 2-D array 
+********************************
+
+
+#include<stdio.h>
+
+#define maximum 30
+void frequency(int[30][30],int,int);
+
+void frequency(int a[30][30],int n, int n2) 
+{
+     int i,j,k,con=0,num;
+     int x, y,visited[n][n2];
+     for(i=0;i<n;i++) {
+       for(j=0; j<n2;j++) {
+          con=1;
+          num=a[i][j];
+          if(visited[i][j]!=1) {
+          for(x=0;x<n;x++) {
+            for(y=0;y<n2;y++) {
+              if((i==x)&&(j==y)) {
+                continue;
+              }
+              if(a[i][j]==a[x][y]) {
+                visited[x][y]=1;
+                con++;
+              }
+            }
+          }
+          printf("\nthe frequency of number %d  is %d",num,con);
+          }
+       }
+     }
+}
+
+int main()
+{
+     int a[maximum][maximum],n,n2,i,j;
+     printf("Enter row and column sizes of 2-D array: \n");//row and column sizes
+     scanf("%d%d",&n, &n2);
+     printf("\nEnter array contents: \n");
+     for(i=0;i<n;i++)
+     {
+       for(j=0;j<n2;j++) 
+       {
+          scanf("%d",&a[i][j]);
+       }
+     }
+     frequency(a,n,n2);
+     return(0);
+}
+
+
+
+********************************
+Code 5:  Calculate Average of numbers in a 2-D Array 
+********************************
+
+#include<stdio.h>
+ 
+int main()
+{
+    int twodarray[12][12];
+    int i,j,row,col;
+    float average,sum=0;
+    printf("Enter the number of rows and columns\n");
+    scanf("%d%d",&row,&col);
+    printf("Enter the numbers of the 2-D array\n");
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            scanf("%d",&twodarray[i][j]);
+        }
+    }
+    
+    printf("The elements in the 2-D array are\n");
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            printf("%d\t",twodarray[i][j]);
+        }
+        printf("\n");
+    }
+    
+    for(i=0;i<row;i++)
+    {
+        for(j=0;j<col;j++)
+        {
+            sum=sum+twodarray[i][j];
+        }
+    }
+    average=sum/(row*col);
+    printf("\nAverage of all the elements of the 2-D array = %.2f",average);
+}
+
+********************************
+Code 6: Admissions Check
+********************************
+
+
+#include<stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int p, c, o, x, y;
+
+void check()
+{
+if (p+c+o >= 260) //you need at least 260 to get admitted 
+  x = 1;
+ else x = 0;
+
+if (p < 70 || c < 70 || o < 70 || p+c+o< 210)
+ y = 1;
+ else y = 0;
+
+}
+
+int main()
+{  
+  check();
+
+  printf("Type your grade in Physics (whole number). \n");
+  scanf("%d", &p);
+  check(p);
+        
+  printf("Type your grade in Calculus (whole number). \n");
+  scanf("%d", &c);
+  check(c);
+        
+  printf("Type your grade in Organic Chemistry (whole number). \n");
+  scanf("%d", &o);
+  check(o);
+
+if (y == 1 )
+{
+printf("\nSorry your grades were not good enough\n");
+}
+
+if (x == 1 && y==0)
+  printf("\nCongratulations, you are accepted!\n");
+
+if (y == 0 && x== 0 )
+ printf("\n You will be put on the waiting list\n");
+return 0;
+}
+
+
+
+********************************
+Code 7: Find Highest and Lowest values of user input 
+********************************
+
+#include <stdio.h>
+int array [10];
+int small, large;
+int i;
+int n=10;
+
+int main()
+{
+i=0;
+ printf("\nThis will take 10 numbers you enter and find the highest value and the lowest value\n");
+
+while (i<n)
+ {
+  
+ printf("\nPlease Enter a number: (%d) ",i+1);
+ scanf("%d",&array[i]);
+{
+  if(array[i]==0)
+  {
+  printf ("please do not enter any zero's, try again (%d)\n",i+1);
+  }
+  else 
+  {i++;}
+}
+ }
+//print all values user entered and find smallest and largest 
+small = large = array[0];
+printf("\nUser entered:\n");
+for(i=0; i<n; i++)
+{
+  if(small>array[i]) small = array[i];
+  
+  else if(large<array[i])large = array[i];
+  
+  printf("%d ", array[i]);}printf("\n");
+  
+  //print smallest and largest number
+  printf("Largest number is %d\n", large);
+  printf("Smallest number is %d\n", small);
+  
+  return 0; 
+}
+
+
+********************************
+Code 8: Determine if entered letter (char) matches expected response 
+********************************
+
+#include <stdio.h>
+
+int main() 
+{
+  char c,H,e;
+
+    printf("Enter the letter H: ");
+   c = getchar();
+  
+  if (c == H)
+   {
+     printf("Great Job!\n");
+   }
+   else 
+   {
+     
+     printf("I'm sorry, You entered: ");
+   putchar(c);
+   }  
+     printf("\nPlease type in a Capitolized H: \n");
+     e = getchar();
+   
+  if (e==H)
+   {
+     printf("Great Job!\n");
+   }
+ 
+   else 
+   {
+     printf("Sorry, try again later\n");
+   }
+
+  return 0;
+}
+
+********************************
+Code 9:  Determine if entered HEX matches expected response 
+********************************
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int toThePow(int x,int n);
+
+ char userinput; // Holds the users response
+  int userinputtot = 0; // temporary storage for the addition of the numbers
+  int attemptCount = 0; // Mainly here for when this code is used for datafiles, and to prevent an infinite while loop.
+  int asciiCase = 0; // Used for determining what case the user input numbers are in
+  int wrongType = 0; // Lets the program know if the wrong type was found.
+  int attemptLimit = 4; // Max number of tries.
+  int userCorrect = 0; // Used like a boolean, tells the while loop to exit when the user is correct.
+
+int main(void)
+ {
+ 
+  while (userCorrect != 1)
+  {
+    //Prompting the user
+    printf("Please input the hexadecimal number FADE to continue: \n");
+    for (int j = 3; j >= 0; j--)
+    {
+    scanf("%c",&userinput);
+
+    //first check is to see if it has HEX letters. 
+    if( (userinput >='a' && userinput<='f') || (userinput >='A' && userinput <='F') || (userinput >= 0 && userinput <= 9 ))
+    {
+      printf("%c is a valid hexadecimal number\n", userinput);
+      if (userinput >=0 && userinput<= 9) // aslo part of the first check is to see if it has valid hex numbers
+       {
+        asciiCase = 0;
+       }
+      if (userinput >='A' && userinput<='F') 
+      {
+        asciiCase = 55; // Uppercase is 55 away from the actual value
+      }
+      if (userinput >='a' && userinput<='f') 
+      {
+        asciiCase = 87; // Lower case is 87 away from the actual value.
+      }
+      //Summing the numbers
+      userinputtot = userinputtot + (userinput - asciiCase) * toThePow(16,j);
+    }
+   if (isxdigit(userinput))
+   {
+    printf("\nYou entered a HEX value\n");
+   }
+    else
+    {//as part of this check if it is not HEX it let user know that their entry is wrong. 
+    printf("%c is a not valid hexadecimal\n", userinput);
+    wrongType = 1;
+    }
+
+    }
+        // The entry was the wrong type, explain to the user what a HEX is.
+    if (wrongType == 1) 
+    {
+      printf("Looks like you entered the wrong type of entry. Hexadecimal numbers are anything 0 - 9, A-F but I'll even accept lower case a-f. Please try your entry again: \n");
+      wrongType = 0;
+    }
+
+    if (userinputtot == 64222) // The second check is to see if it is correct, 64222 is FADE in Decimal 
+    { 
+      printf("Great job,you entered FADE! Time for me to FADE away, goodbye.\n");
+      userCorrect = 1;
+      break;
+    } 
+    else
+     { 
+      printf("Unfortunately you did not enter the correct hexadecimal, try again.\n");
+      userinputtot = 0;
+      }
+
+    //Inform user of remaining attempts
+    attemptCount++;
+    printf("%d Attempts Remaining.\n",attemptLimit - attemptCount);
+    if (attemptCount > attemptLimit)
+     {
+      userCorrect = 1;
+    }
+  } 
+}
+
+int toThePow(int x,int n) // Exponent function without the use of Math header.
+{
+    int powNum = 1;
+
+    for (int i = 0; i < n; ++i)
+        powNum *= x;
+
+    return(powNum);
+}
+
+********************************
+Code 10:  Determine if entered String matches expected response 
+********************************
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+char *str = "my name is george";
+
+int main() {
+  int a;
+  char userinput[17]; 
+  int attemptCount = 0; 
+  int attemptLimit = 3; //I don't want to give too many attempts 
+  int correct = 0;
+
+  while (correct != 1) //initializing a loop if correct does not =1)
+  {
+    //the objective is to get the user to type this exact sentance. 
+    printf("\nPlease type 'my name is george' below:\n ");    
+    fgets(userinput, 18, stdin); //reads string from user put at 20 in case they type something longer than the required sentance
+    printf("You said: ");    
+    puts(userinput);  //displays what they wrote even if it is wrong
+  int len = strlen(userinput);
+  if (len != 17) //first check is to check the length of the string, if it is too long it will print a message
+   {
+     printf("This isnt the correct lenght of sentance, try typing 'my name is george' with only spaces between each word\n");
+   }
+
+
+  int res = strcmp(userinput, str); 
+  if (res == 0) //second check is to see if the string they typed is the same as the stored sentance. 
+    {
+      printf("\nGreat job!\n");
+    correct = 1;
+    break;
+  }
+  else 
+  {
+    printf("\n Try again\n");
+  }
+
+   //Inform user of remaining attempts
+    attemptCount++;
+    printf("(%d Attempts Remaining)\n",attemptLimit - attemptCount);
+    if (attemptCount > attemptLimit)
+    {
+      correct = 1;
+      break;
+    }
+  }
+  return 0;
+}
+
+
+********************************
+Code 11:  Determine if entered integer matches expected response 
+********************************
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main() 
+
+ {
+  int userInput; 
+  int attemptCount = 0; 
+  int attemptLimit = 4; 
+  int correct = 0;
+  int yes = 4;
+  
+  while (correct != 1) // ititalizing a loop, when 'correct' is 0
+  {
+    //im trying to get the user to type in the integer "4"
+    printf("\n\nI'm thinking of a number between 3 and 5. Can you guess the number? Type your answer: \n");
+    scanf("%d",&userInput);
+    
+  //frist check is to see if it is correct..
+  if (userInput == yes)
+  {
+   printf("Congratulations, you did it! 4 was the correct number\n");
+   correct = 1;
+   break;
+   } //if the user types a 4 then we count the 'correct' and 1 stops the loop
+    
+    //second check is to see if it is anything other than 4
+   if(userInput >= '5' || userInput <='3')
+    {
+     printf("sorry, the number should be greater than 3 and smaller than 5\n" );
+     }
+      else
+      {
+        printf("\n Sorry try again: ");
+      }
+  }
+    
+    //Inform user of remaining attempts
+    attemptCount++;
+    printf("(%d Attempts Remaining)\n",attemptLimit - attemptCount);
+    if (attemptCount > attemptLimit)
+    {
+      correct = 1;
+    }
+
+  return 0;
+}
+
+********************************
+Code 12: Determine if user input is a palindrome
+********************************
+
+#include <stdio.h>
+#include <string.h>
+ 
+int main()
+{
+  char str[100];
+  int i, len, temp;
+  temp = 0;
+  len = strlen(str);
+ 
+  printf("\n Please Enter a single word to see if it is a Palindrome:  ");
+  scanf("%s",str);
+  	 	   	
+  for(i = 0; i < len; i++)
+	{
+	 if(str[i] != str[len - i - 1])
+		{
+		 temp = 1;
+		 break;	
+		} 
+	}
+	if(temp == 0)
+	 {
+		printf("\n %s is a Palindrome :) ", str);
+	 }
+	else
+	 {
+		printf("\n %s is Not a Palindrome :( ", str);
+	 }	
+  return 0;
+}
+
+********************************
+Code 13: Determine a Vowel or Consonant 
+********************************
+
+#include <stdio.h>
+
+int main() 
+{ 
+char x;
+char a = 'a';
+char e = 'e';
+char i = 'i'; 
+char o = 'o';
+char u = 'u';
+char A = 'A';
+char E = 'E';
+char I = 'I';
+char O = 'O';
+char U = 'U';
+
+printf("Please enter a single letter\n");
+scanf("%c",&x);
+if (x == a||x ==e||x ==i||x ==o||x ==u||x ==A||x ==E||x ==I||x ==O||x ==U)
+{
+ printf("The letter %c is a Vowel\n",x);
+}
+else
+{
+ printf("The letter %c is a Consonant\n",x);
+}
+return 0; 
+}
+
+********************************
+Code 14: Find ASCII value of an entered value
+********************************
+
+#include <stdio.h>
+
+int main()
+{
+char c;
+
+printf("Please enter a single character:\n");
+scanf("%c",&c);
+
+printf("ASCII Value of %c is: %d \n",c, c);
+
+return 0;
+}
+
+********************************
+Code 15: Find ASCII HEX value of an entered value
+********************************
+
+#include <stdio.h>
+
+int main()
+{
+char c;
+
+printf("Please enter a single character:\n");
+scanf("%c",&c);
+
+printf("ASCII Value of %c is: %x \n",c, c);
+
+return 0;
+}
+
+
+********************************
+Code 16:  Pattern (Half Christmas Tree Example)
+********************************
+
+
+#include <stdio.h>
+int main() 
+{
+   int i, j, rows;
+   printf("Enter the number of rows: ");
+   scanf("%d", &rows);
+for (i =4; i <= rows; ++i)
+    {
+      for (j = 4; j <= i; ++j)
+      {
+         printf(" **");
+        
+       }
+      printf("\n");
+    }
+for (i = 4; i <= rows; ++i)
+    {
+      for (j = 4; j <= i; ++j)
+      {
+         printf(" * * ");
+        
+       }
+      printf("\n");
+    }
+for (i = 4; i <= rows; ++i)
+    {
+      for (j = 4; j <= i; ++j)
+      {
+         printf(" ** ** ");
+        
+       }
+      printf("\n");
+    }
+   
+for (i = 4; i <= rows; ++i)
+    {
+      for (j = 4; j <= i; ++j)
+      {
+         printf(" *** ***");
+        
+       }
+      printf("\n");
+    }
+    return 0;
+}
+
+********************************
+Code 17: Pattern: Write name with letters
+********************************
+
+#include <stdio.h>
+
+int main() 
+{
+  char f = 'F';
+  char a = 'A';
+  char n = 'N';
+  char t = 'T';
+  char o = 'O';
+  char z = 'Z';
+  char i = 'I';
+  char x = '#';
+
+printf("\nMy last name is: Fantozzi \n");
+  printf("FFFFFF %03c %05c %05c %03c %c %c %c %c %05c %05c %c %c %c %05c %c %c %c %05c\n",a, n, n,t,t,t,t,t,o,z,z,z,z,z,z,z,z,i);
+  printf("F %07c %01c %04c %c %03c %07c %07c %03c %09c %11c %05c\n",a,a,n,n,n,t,o,o,z,z,i);
+  printf("F %06c %03c %03c %02c %02c %07c %06c %05c %07c %10c %07c\n",a,a,n,n,n,t,o,o,z,z,i);
+  printf("FFFFF %02c %c %c %03c %03c %c %07c %06c %05c %06c %09c %09c\n",a,a,a,n,n,n,t,o,o,z,z,i);
+  printf("F %06c %03c %03c %05c %07c %06c %05c %05c %08c %11c\n",a,a,n,n,t,o,o,z,z,i);
+  printf("F %06c %03c %03c %05c %07c %07c %03c %05c %08c %12c\n",a,a,n,n,t,o,o,z,z,i);
+  printf("F %06c %03c %03c %05c %07c %09c %05c %c %c %c %04c %c %c %c %06c\n",a,a,n,n,t,o,z,z,z,z,z,z,z,z,i);
+
+printf("\nMy address is: 12 Jay \n");
+  printf("%c %04c %c %07c %05c %05c %03c\n",x,x,x,x,x,x,x);
+  printf("%c %03c %03c %06c %03c %03c %04c %c\n",x,x,x,x,x,x,x,x);
+  printf("%c %05c %08c %03c %c %c %05c\n",x,x,x,x,x,x,x );
+  printf("%c %03c %10c %03c %03c %05c\n",x,x,x,x,x,x);
+  printf("%c %03c %c %c %03c %c %04c %03c %05c\n",x,x,x,x,x,x,x,x,x);
+  
+  return 0;
+}
+
+********************************
+Code 18: Determine all permutations of a string 
+********************************
+
+
+#include <stdio.h>
+#include <string.h>
+ 
+//global functions to permutate a string 
+void swap(char *x, char *y)
+{
+    char temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+//create permutation
+void permute(char *a, int l, int r)
+{
+int i;
+if (l == r)
+    printf("%s\n", a);
+else
+{
+    for (i = l; i <= r; i++)
+    {
+        swap((a+l), (a+i));
+        permute(a, l+1, r);
+        swap((a+l), (a+i)); 
+    }
+}
+}
+//main program for above functions
+int main()
+{
+    char str[] = "KLMNOP";
+    int n = strlen(str);
+    permute(str, 0, n-1);
+    return 0;
+}
+
+*********************************
+Code 19: Convert user entry (name) to Morse Code
+*********************************
+
+
+#include <stdio.h>
+#include<stdlib.h>
+#include <string.h>
+
+char * morseConvert(char x)
+{ // This is the conversion table
+  switch (x) { 
+    case 'a': 
+      return ".-"; 
+    case 'b': 
+      return "-..."; 
+    case 'c': 
+      return "-.-."; 
+    case 'd': 
+      return "-.."; 
+    case 'e': 
+      return "."; 
+    case 'f': 
+      return "..-."; 
+    case 'g': 
+      return "--."; 
+    case 'h': 
+      return "...."; 
+    case 'i': 
+      return ".."; 
+    case 'j': 
+      return ".---"; 
+    case 'k': 
+      return "-.-"; 
+    case 'l': 
+      return ".-.."; 
+    case 'm': 
+      return "--"; 
+    case 'n': 
+      return "-."; 
+    case 'o': 
+      return "---"; 
+    case 'p': 
+      return ".--."; 
+    case 'q': 
+      return "--.-"; 
+    case 'r': 
+      return ".-."; 
+    case 's': 
+      return "..."; 
+    case 't': 
+      return "-"; 
+    case 'u': 
+      return "..-"; 
+    case 'v': 
+      return "...-"; 
+    case 'w': 
+      return ".--"; 
+    case 'x': 
+      return "-..-"; 
+    case 'y': 
+      return "-.--"; 
+    case 'z': 
+      return "--..";
+    case 'A': 
+      return ".-"; 
+    case 'B': 
+      return "-..."; 
+    case 'C': 
+      return "-.-."; 
+    case 'D': 
+      return "-.."; 
+    case 'E': 
+      return "."; 
+    case 'F': 
+      return "..-."; 
+    case 'G': 
+      return "--."; 
+    case 'H': 
+      return "...."; 
+    case 'I': 
+      return ".."; 
+    case 'J': 
+      return ".---"; 
+    case 'K': 
+      return "-.-"; 
+    case 'L': 
+      return ".-.."; 
+    case 'M': 
+      return "--"; 
+    case 'N': 
+      return "-."; 
+    case 'O': 
+      return "---"; 
+    case 'P': 
+      return ".--."; 
+    case 'Q': 
+      return "--.-"; 
+    case 'R': 
+      return ".-."; 
+    case 'S': 
+      return "..."; 
+    case 'T': 
+      return "-"; 
+    case 'U': 
+      return "..-"; 
+    case 'V': 
+      return "...-"; 
+    case 'W': 
+      return ".--"; 
+    case 'X': 
+      return "-..-"; 
+    case 'Y': 
+      return "-.--"; 
+    case 'Z': 
+      return "--.."; 
+    case ' ': 
+      return "   "; 
+    case '-':
+      return "_...._";
+    default:
+      return "unrecognized_character"; 
+  } 
+} 
+int main()
+{
+  printf("\n\nWorld War II Communications simulation!\n");
+  printf("\nPlease type your name to identify yourself to the RAF base in England:\n");
+  char inputString[255];
+  scanf("%[^\n]",inputString);
+  int endOf = strlen(inputString);
+  printf("Message being sent over airwaves to RAF base in England in Morse Code is: ");
+  for(int i = 0; i < endOf; i++){
+    char p = inputString[i];
+    printf(" %s ", morseConvert((p)));// Convert and output.
+  }
+     printf("\n\nMessage recived by RAF commander as: %s", inputString);
+  return 0;
+}
+
+
+
+****************************************
+Code 20:  Book sorting code by author, title, subject
+****************************************
+
+#include <stdio.h>
+#include <string.h>
+ 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+};
+ 
+int main( ) {
+
+   struct Books Book1;        /* Declare Book1 of type Book */
+   struct Books Book2;        /* Declare Book2 of type Book */
+ 
+   /* book 1 specification */
+   strcpy( Book1.title, "C Programming");
+   strcpy( Book1.author, "Fatozzi, Anthony"); 
+   strcpy( Book1.subject, "C Programming Tutorial");
+   Book1.book_id = 6495407;
+
+   /* book 2 specification */
+   strcpy( Book2.title, "Building Audio Video Systems");
+   strcpy( Book2.author, "Townsend, Pete");
+   strcpy( Book2.subject, "AV Tutorial");
+   Book2.book_id = 6495700;
+ 
+   /* print Book1 info */
+   printf( "Book 1 title : %s\n", Book1.title);
+   printf( "Book 1 author : %s\n", Book1.author);
+   printf( "Book 1 subject : %s\n", Book1.subject);
+   printf( "Book 1 book_id : %d\n", Book1.book_id);
+
+   /* print Book2 info */
+   printf( "Book 2 title : %s\n", Book2.title);
+   printf( "Book 2 author : %s\n", Book2.author);
+   printf( "Book 2 subject : %s\n", Book2.subject);
+   printf( "Book 2 book_id : %d\n", Book2.book_id);
+
+   return 0;
+}
+
+****************************************
+Code 21:  Read from a file
+****************************************
+
+//Requires file program.txt to be in compilable location!
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+  int number;   
+  FILE *fptr;   
+  if ((fptr = fopen("program.txt","r")) == NULL)
+  {       
+    printf("Error! opening file");   // Program exits if the file pointer returns NULL.      
+    return(1);  
+     }  
+   fscanf(fptr, "%d", &number);  
+   printf("The numbers in the file are %d", number);   
+   fclose(fptr);    
+   return 0;
+}
+
+****************************************
+Code 22:  Write to a file
+****************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{   
+  int num;   
+  FILE *fptr;   
+  fptr = fopen("C:\\program.txt","w");   
+  if(fptr == NULL)   
+  {      
+    printf("Error!");        
+     exit(1);                
+  }   
+  printf("Enter num: ");   
+  scanf("%d",&num);   
+  fprintf(fptr,"%d",num);   
+  fclose(fptr);   
+  printf("successfully written %d to file program.txt \n", num);
+  return 0;
+  }
+
+
+*********************************************
+Code 23: Print Integer, HEX, and ASCII values of a matrix
+*********************************************
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int array[3][5] =
+{
+{47,7,3,6,1},
+{15,21,11,13,30},
+{18,2,58,19,87}
+};
+
+int row=3;
+int column = 5;
+
+int main ()
+{
+printf("\noriginal array\n");
+int i,j;
+for(i=0;i<row;i++)
+{
+  for(j=0;j<column;j++)
+  {   
+    printf(" %d \n ",array[i][j]);
+  }
+}
+printf ("\nHEX array\n");
+for( i=0;i<row;i++)
+{ 
+ for(j=0;j<column;j++)
+  {
+   printf(" %x \n",array[i][j]);
+  }
+}
+
+printf("\nASCII array\n");
+for(i=0;i<row;i++)
+{
+ for(j=0;j<column;j++)
+  {
+    printf("%c \n",array[i][j]); 
+  }
+}
+return 0;
+}
+
+*********************************************
+Code 24: C++ Code to Sort Datafile in ascending order 
+*********************************************
+
+#include <iomanip>
+#include<iostream>
+#include<fstream>
+#include <string.h>
+//using namespace std;
+void count(int&);
+void printList(std::string[],int);
+void readFile(std::string[]);
+void sortStrings(std::string[],int);
+
+int main()
+{
+    int word_count = 0;
+    std::string* list;
+    count(word_count);
+    list = new std::string[word_count]();
+    readFile(list);
+    printf("\n File before sorting is: \n\n");
+    printList(list,word_count);
+    sortStrings(list,word_count);
+    printf("\n File after sorting is: \n\n");
+    printList(list,word_count);
+}
+
+void count(int& word_count)
+{
+    //loop file to get number of lines
+    std::ifstream inFile;
+    std::string word;
+    inFile.open("datafile1.txt");
+    if(!inFile)
+    {
+        printf("Unable To read File ");
+        exit(1);
+    }
+    while(inFile >> word)
+    {
+        word_count++;
+    }
+    inFile.close();
+}
+
+void readFile(std::string list[])
+{
+    std::ifstream inFile;
+    std::string word;
+    int i = 0;
+    inFile.open("datafile1.txt");
+    while(inFile>>word)
+    {   
+        list[i] = word;  
+        i++;
+    }
+    inFile.close();
+}
+
+void printList(std::string list[],int word_count)
+{
+  for(int i = 0; i<word_count;i++)
+    {
+      std::cout<< list[i] << "";
+    }
+  std::cout << "\n\n";
+
+}
+
+void sortStrings(std::string list[], int n) 
+{ 
+    std::string temp; 
+  
+    // Sorting strings using bubble sort 
+    for (int j=0; j<n-1; j++) 
+    { 
+        for (int i=j+1; i<n; i++) 
+        { 
+            if (strcmp(list[j].c_str(), list[i].c_str()) > 0) 
+            { 
+                temp = list[j];
+                list[j] = list[i];
+                list[i] = temp;
+
+            } 
+        } 
+    } 
+} 
+
+
+*********************************************
+Code 25: C++ Code to sort datafile in order of frequency
+*********************************************
+
+#include <fstream>
+#include <iostream>
+//using namespace std; //commented this out and added std:: to each required spot
+
+int main()
+{
+   int freq[1500];     // frequencies of letters
+   std::ifstream inFile;   // input file
+   char ch; 
+
+   inFile.open("datafile1.txt");
+   if (!inFile)
+   {
+      std::cout << "The input file could not be opened."<<std::endl;
+      return 1;
+   }
+
+   // initialize frequency counts to zero for each possible letter
+   for (int k = 0; k < 500; k++)
+   {
+      freq[k] = 0;
+   }
+   printf("\nFile before sorting: \n\n");
+   // Read the file, keeping track of frequency with which each letter occurs
+   ch = inFile.get();
+   while (ch != EOF)
+   {
+      std::cout << ch;
+      ch = toupper(ch);
+      freq[ch]++;
+      ch = inFile.get();
+   }
+   // Print the output table
+  std::cout << std::endl << "\n \nFrequencies of elements in this file are as follows.\n" << std::endl;
+  for (char ch = '1'; ch <= '9'; ch++)
+  {
+      std::cout << ch << " is repeated " << freq[ch] << " times \n" << std::endl;
+  }
+  for (char ch = 'N'; ch == 'N'; ch++)
+  {
+      std::cout << ch << " is repeated " << freq[ch] << " times\n" << std::endl;
+  }
+  for (char ch = 'T'; ch == 'T'; ch++)
+  {
+      std::cout << ch << " is repeated " << freq[ch] << " times" << std::endl;
+  }
+
+  return 0;
+}
+
+********************************
+           ** FIN **
+********************************
